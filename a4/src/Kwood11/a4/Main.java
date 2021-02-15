@@ -5,6 +5,11 @@ import Kwood11.a3.*;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Main entry point for A4, multithreadded sorting function
+ * @author Kenneth Wood
+ * @version 1.0
+ */
 public class Main {
 
     public static void main(String[] args) throws InterruptedException{

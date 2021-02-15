@@ -8,6 +8,7 @@ package Kwood11.a3;
  */
 public class Rectangle extends Square{
     private float height;
+
     /**
      * Default constructor sets the type to shape
      */
