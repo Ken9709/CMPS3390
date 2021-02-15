@@ -37,6 +37,11 @@ public class Shape {
      * shapes nicely
      * @return String that represents the object
      */
+
+    public double getArea(){
+        return 0.0;
+    }
+
     @Override
     public String toString(){
         return String.format("Type: %-14s|", this.type);
