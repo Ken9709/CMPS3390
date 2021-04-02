@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "2301021965",
+    "project_id": "kwood11a10",
+    "storage_bucket": "kwood11a10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2301021965:android:dd5423e53dc8612378aa44",
+        "android_client_info": {
+          "package_name": "kwood11.a10"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2301021965-3f70qqp2bb55e9v48j1jhteaang00v1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQvlsi6xE2e0zLkaiGbkNgsbrmVHojyu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2301021965-3f70qqp2bb55e9v48j1jhteaang00v1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
