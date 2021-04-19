@@ -16,7 +16,7 @@ import java.util.Iterator;
  * that starts and all attributes that need to be tracked for
  * the gamestate.
  */
-public class Player {
+public class Player implements GameObject{
 
     private float x,y, prevX, prevY;
     private final Bitmap playerImg;
@@ -27,9 +27,11 @@ public class Player {
     private final float dpi;
     private int frameTicks = 0, shotTicks =0;
     private final Resources res;
+    private final int width, height;
 
 
     ArrayList<Laser> lasers = new ArrayList<>();
+    private float health = 100f;
 
     /**
      * Player constructor
@@ -42,6 +44,8 @@ public class Player {
         playerRight = BitmapFactory.decodeResource(res, R.mipmap.player_right);
 
         curImage = playerImg;
+        width = curImage.getWidth();
+        height = curImage.getHeight();
 
         DisplayMetrics dm = res.getDisplayMetrics();
         dpi = dm.densityDpi;
@@ -53,18 +57,23 @@ public class Player {
 
     }
 
+
+    public void updateTouch(int touchX, int touchY) {
+        if (touchX > 0 && touchY > 0) {
+            this.x = touchX - (playerImg.getWidth() / 2f);
+            this.y = touchY - (playerImg.getHeight() / 2f);
+        }
+    }
     /**
      * Update function for the game that causes the gamestate
      * to update
-     * @param touchX x coordinate of the touch from the player
-     * @param touchY y coordinate of the touch from the player
      */
-    public void update(int touchX, int touchY){
-        if(touchX >0 && touchY> 0){
-            this.x = touchX - (playerImg.getWidth() /2f);
-            this.y = touchY - (playerImg.getHeight() / 2f);
-        }
 
+    @Override
+    public void update(){
+
+
+        if(health <=0) return;
         if(Math.abs(x - prevX) < 0.04 * dpi) {
             frameTicks++;
         } else { frameTicks =0;
@@ -109,16 +118,71 @@ public class Player {
             }
     }
 
+
+
     /**
      * Draw function to draw the icons and background and lasers
      * @param canvas the canvas to be drawn on
      */
     public void draw(Canvas canvas){
+        if(health <= 0) return;
         canvas.drawBitmap(curImage, this.x, this.y,this.paint);
 
 
        for(Laser laser : lasers){
            laser.draw(canvas);
        }
+    }
+
+    /**
+     *  getter method for x position of player
+     * @return y
+     */
+    @Override
+    public float getX() {
+        return x;
+    }
+
+    /**
+     * getter method for y position of the player
+     * @return y
+     */
+    @Override
+    public float getY() {
+        return y;
+    }
+
+    @Override
+    public float getWidth() {
+        return width;
+    }
+
+    @Override
+    public float getHeight() {
+        return height;
+    }
+
+    @Override
+    public boolean isAlive() {
+        return health >0f;
+    }
+
+    @Override
+    public float getHealth() {
+        return health;
+    }
+
+    @Override
+    public float takeDamage(float damage) {
+        return health -= damage;
+    }
+
+    @Override
+    public float addHealth(float repairAmount) {
+        return health += repairAmount;
+    }
+
+    public ArrayList<Laser> getLasers(){
+        return lasers;
     }
 }

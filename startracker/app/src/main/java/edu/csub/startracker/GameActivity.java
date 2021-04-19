@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.WindowManager;
 
 /**
@@ -34,8 +36,25 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     * Override method for the when onPause when the game is paused
-     * by exiting the app
+     * Method to be used when the player dies, resulting
+     * in a game over.
+     */
+
+    public void gameOver(){
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run(){
+                finish();
+            }
+        }, 6000);
+    }
+
+    /**
+     *
+     *  Override method for the when onPause when the game is paused
+     *   by exiting the app
+     *
      */
     @Override
     protected void onPause(){
