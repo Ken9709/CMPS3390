@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 /**
- * Eneemy 1 class
+ * Enemy 1 class
  */
 public class Enemy01 implements GameObject{
     private final float dpi;
@@ -19,6 +19,13 @@ public class Enemy01 implements GameObject{
     private int screenWidth, screenHeight;
     private Paint paint = new Paint();
 
+
+    /**
+     * Constructor for an enemy 1
+     * @param res resources
+     * @param x x position
+     * @param y y position
+     */
     public Enemy01(Resources res, float x, float y){
         this.x = x;
         this.y = y;
@@ -36,6 +43,10 @@ public class Enemy01 implements GameObject{
         ySpeed = 0.02f * dpi;
     }
 
+    /**
+     * Overriden update method to update when an enemy 1
+     * is created
+     */
     @Override
     public void update() {
         float x0ff = (float) (0.02f * screenWidth * Math.sin(y / (0.04f * screenHeight)));
@@ -47,16 +58,28 @@ public class Enemy01 implements GameObject{
 
     }
 
+    /**
+     * overriden draw method to draw an enemy 1
+     * @param canvas
+     */
     @Override
     public void draw(Canvas canvas) {
         canvas.drawBitmap(curImage, x, y, paint);
     }
 
+    /**
+     * overriden getX position method
+     * @return
+     */
     @Override
     public float getX() {
         return x;
     }
 
+    /**
+     * overriden get y position method
+     * @return
+     */
     @Override
     public float getY() {
         return y;
